@@ -9,11 +9,22 @@ class RomanNumerals
 {
     public function generate($number)
     {
+        $this->checkIfNumberIsNotInteger($number);
+
+        $this->checkIfNumberIsBetween0and3000($number);
+
+    }
+
+    protected function checkIfNumberIsNotInteger($number)
+    {
         if(!is_integer($number))
         {
             throw new IsNotIntegerException();
         }
-        
+    }
+
+    protected function checkIfNumberIsBetween0and3000($number)
+    {
         if($this->numberIsBetween0and3000($number))
         {
             throw new IsNumberNotBetween0or3000Exception();
