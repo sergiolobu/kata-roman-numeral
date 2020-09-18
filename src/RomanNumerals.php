@@ -13,6 +13,11 @@ class RomanNumerals
 
         $this->checkIfNumberIsBetween0and3000($number);
 
+        if($number == 1)
+        {
+            return 'I';
+        }
+
     }
 
     protected function checkIfNumberIsNotInteger($number)

@@ -38,6 +38,21 @@ class RomanNumeralsTest extends TestCase
         //Asserts
         $romanNumerals->generate(3010);
     }
+
+    /**
+     * @test
+     */
+    public function return_I_when_print_1()
+    {
+         //Arrange
+         $romanNumerals = new RomanNumerals();
+
+         //Act
+         $romanNumber = $romanNumerals->generate(1);
+ 
+         //Asserts
+         $this->assertEquals('I',$romanNumber);
+    }
 }
 
 ?>
