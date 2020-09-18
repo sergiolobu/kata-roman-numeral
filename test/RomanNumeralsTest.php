@@ -8,6 +8,13 @@ use App\exception\IsNotIntegerException;
 
 class RomanNumeralsTest extends TestCase
 {
+    protected $romanNumerals;
+
+    protected function setUp():void
+    {
+        parent::setUp();
+        $this->romanNumerals = new RomanNumerals();
+    }
 
     /**
      * @test
@@ -15,13 +22,12 @@ class RomanNumeralsTest extends TestCase
     public function throw_exception_when_print_not_integer()
     {
         //Arrange
-        $romanNumerals = new RomanNumerals();
 
         //Act
         $this->expectException(IsNotIntegerException::class);
 
         //Asserts
-        $romanNumerals->generate('hola');
+        $this->romanNumerals->generate('hola');
     }
 
     /**
@@ -30,13 +36,12 @@ class RomanNumeralsTest extends TestCase
     public function throw_exception_when_number_is_not_between_0_or_3000()
     {
         //Arrange
-        $romanNumerals = new RomanNumerals();
 
         //Act
         $this->expectExceptionMessage('Invalid number, not between 0 or 3000');
 
         //Asserts
-        $romanNumerals->generate(3010);
+        $this->romanNumerals->generate(3010);
     }
 
     /**
@@ -45,13 +50,26 @@ class RomanNumeralsTest extends TestCase
     public function return_I_when_print_1()
     {
          //Arrange
-         $romanNumerals = new RomanNumerals();
 
          //Act
-         $romanNumber = $romanNumerals->generate(1);
+         $romanNumber = $this->romanNumerals->generate(1);
  
          //Asserts
          $this->assertEquals('I',$romanNumber);
+    }
+
+    /**
+     * @test
+     */
+    public function return_V_when_print_5()
+    {
+         //Arrange
+
+         //Act
+         $romanNumber = $this->romanNumerals->generate(5);
+ 
+         //Asserts
+         $this->assertEquals('V',$romanNumber);
     }
 }
 

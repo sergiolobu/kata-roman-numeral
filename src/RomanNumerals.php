@@ -18,6 +18,11 @@ class RomanNumerals
             return 'I';
         }
 
+        if($number == 5)
+        {
+            return 'V';
+        }
+
     }
 
     protected function checkIfNumberIsNotInteger($number)
