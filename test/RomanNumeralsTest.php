@@ -8,6 +8,7 @@ use App\exception\IsNotIntegerException;
 
 class RomanNumeralsTest extends TestCase
 {
+
     /**
      * @test
     */
@@ -21,6 +22,21 @@ class RomanNumeralsTest extends TestCase
 
         //Asserts
         $romanNumerals->generate('hola');
+    }
+
+    /**
+     * @test
+    */
+    public function throw_exception_when_number_is_not_between_0_or_3000()
+    {
+        //Arrange
+        $romanNumerals = new RomanNumerals();
+
+        //Act
+        $this->expectExceptionMessage('Invalid number, not between 0 or 3000');
+
+        //Asserts
+        $romanNumerals->generate(3010);
     }
 }
 
