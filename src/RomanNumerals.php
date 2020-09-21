@@ -13,16 +13,29 @@ class RomanNumerals
 
         $this->checkIfNumberIsBetween0and3000($number);
 
-        if($number == 1)
-        {
-            return 'I';
-        }
+        $basicRomanNumbersArray = $this->getBasicRomanNumbersArray();
 
-        if($number == 5)
-        {
-            return 'V';
-        }
+        $romanNumber = $basicRomanNumbersArray[$number];
 
+        return $romanNumber;
+
+    }
+
+    protected function getBasicRomanNumbersArray()
+    {
+        $basicRomanNumbersArray = 
+        [
+            1 => 'I',
+            5 => 'V',
+            10 => 'X',
+            50 => 'L',
+            100 => 'C',
+            500 => 'D',
+            1000 => 'M',
+
+        ];
+
+        return $basicRomanNumbersArray;
     }
 
     protected function checkIfNumberIsNotInteger($number)
