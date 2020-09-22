@@ -7,35 +7,25 @@ use App\exception\IsNumberNotBetween0or3000Exception;
 
 class RomanNumerals
 {
+    const BASIC_ROMAN_NUMBERS = 
+    [
+        1 => 'I',
+        5 => 'V',
+        10 => 'X',
+        50 => 'L',
+        100 => 'C',
+        500 => 'D',
+        1000 => 'M',
+    ]; 
+
     public function generate($number)
     {
         $this->checkIfNumberIsNotInteger($number);
 
         $this->checkIfNumberIsBetween0and3000($number);
 
-        $basicRomanNumbersArray = $this->getBasicRomanNumbersArray();
+        return self::BASIC_ROMAN_NUMBERS[$number];
 
-        $romanNumber = $basicRomanNumbersArray[$number];
-
-        return $romanNumber;
-
-    }
-
-    protected function getBasicRomanNumbersArray()
-    {
-        $basicRomanNumbersArray = 
-        [
-            1 => 'I',
-            5 => 'V',
-            10 => 'X',
-            50 => 'L',
-            100 => 'C',
-            500 => 'D',
-            1000 => 'M',
-
-        ];
-
-        return $basicRomanNumbersArray;
     }
 
     protected function checkIfNumberIsNotInteger($number)
