@@ -7,15 +7,21 @@ use App\exception\IsNumberNotBetween0or3000Exception;
 
 class RomanNumerals
 {
-    const BASIC_ROMAN_NUMBERS = 
+    const SPECIAL_ROMAN_NUMBERS = 
     [
-        1 => 'I',
-        5 => 'V',
-        10 => 'X',
-        50 => 'L',
-        100 => 'C',
-        500 => 'D',
         1000 => 'M',
+        900 => 'CM',
+        500 => 'D',
+        400 => 'CD',
+        100 => 'C',
+        90 => 'XC',
+        50 => 'L',
+        40 => 'XL',
+        10 => 'X',
+        9 => 'IX',
+        5 => 'V',
+        4 => 'IV',
+        1 => 'I',
     ]; 
 
     public function generate($number)
@@ -24,7 +30,19 @@ class RomanNumerals
 
         $this->checkIfNumberIsBetween0and3000($number);
 
-        return self::BASIC_ROMAN_NUMBERS[$number];
+        $romanNumber = '';
+
+        foreach(self::SPECIAL_ROMAN_NUMBERS as $key => $specialRomanNumber)
+        {
+            while($number >= $key)
+            {
+                $romanNumber .= $specialRomanNumber;
+
+                $number -= $key ;
+            }
+        }
+        
+        return $romanNumber;
 
     }
 
